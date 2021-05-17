@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { fromEvent } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
-import fetchListItems from '../functions';
+import { fetchListItems } from '../functions';
 
 export default function ListPage() {
   const [listItem, setListItem] = useState([]);
@@ -9,11 +9,13 @@ export default function ListPage() {
 
   const fetchData = useCallback(
     () => {
-      console.log("fetchData");
       fetchListItems(itemCount).then((data) => {
         const newItems = data.assets;
         setListItem([...listItem, ...newItems]);
         setItemCount(itemCount + newItems.length);
+      }).catch(err => {
+        console.error("Error when fetching list items");
+        console.error(err);
       });
     },
     [itemCount, listItem],

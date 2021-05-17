@@ -5,4 +5,11 @@ async function fetchListItems(offset = 0) {
     return response.json();
 };
 
-export default fetchListItems;
+async function fetchItemDetail(contractAddress = "", tokenId = "") {
+    if (contractAddress.length === 0 || tokenId.length === 0) return;
+    const url = `https://api.opensea.io/api/v1/asset/${contractAddress}/${tokenId}/`;
+    const response = await fetch(url);
+    return response.json();
+};
+
+export { fetchListItems, fetchItemDetail };
