@@ -7,8 +7,8 @@ function App() {
   const tokenId = '96448705941447295663957679096720734318386598746918235613232686456707248816129';
   return (
     <div className="App">
-      {/* <ListPage /> */}
-      <DetailPage contractAddress={addr} tokenId={tokenId} />
+      <ListPage />
+      {/* <DetailPage contractAddress={addr} tokenId={tokenId} /> */}
     </div>
   );
 }
