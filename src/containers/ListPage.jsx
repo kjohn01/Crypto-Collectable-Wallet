@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Observable, fromEvent } from 'rxjs';
+import { fromEvent } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import fetchListItems from '../functions';
 
@@ -23,8 +23,8 @@ export default function ListPage() {
     // fetch on page load
     fetchData();
     // Bind the fetchData method to the window scrolling event
-    let scrollEvent = fromEvent(window, 'scroll');
-    scrollEvent.pipe(
+    const scrollEvent = fromEvent(window, 'scroll');
+    const subscription = scrollEvent.pipe(
       map((e) => ({
         scrollHeight: e.target.scrollHeight,
         scrollTop: e.target.scrollTop,
@@ -33,7 +33,7 @@ export default function ListPage() {
       filter(position => position.scrollTop + position.clientHeight >= position.scrollHeight)
     ).subscribe(() => fetchData());
     return () => {
-
+      subscription.unsubscribe();
     }
   }, [fetchData]);
 
