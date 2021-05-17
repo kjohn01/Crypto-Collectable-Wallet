@@ -1,2 +1,26 @@
 /* @import "~bootstrap/dist/css/bootstrap.min.css"; */
 @import "~bootstrap/scss/bootstrap.scss";
+
+.detail-page {
+    height: 100vh;
+    p {
+        max-height: 30vh;
+    }
+    .header {
+        flex: 0 1 auto;
+        position: relative;
+        .nav-link {
+            position: absolute;
+            left: 0;
+        }
+    }
+      
+    .content {
+        flex: 1 1 auto;
+    }
+      
+    .footer {
+        flex: 0 1 40px;
+    }
+}
+
