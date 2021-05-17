@@ -12,7 +12,6 @@ export default function ListPage() {
   const [hasReachedEnd, setHasReachedEnd] = useState(false);
 
   const fetchData = useCallback(() => {
-    console.log("fetchData", itemCount);
       if (!isLoading && !hasReachedEnd) {
         setIsLoading(true);
         fetchListItems(itemCount).then((data) => {
@@ -57,7 +56,7 @@ export default function ListPage() {
   }, [fetchData, hasReachedEnd, isLoading, itemCount])
 
   const list = useMemo(() => listItem.map((item) => <Col key={item.id} sm={6} className="my-3">
-  <ItemCard imageUrl={item.image_url} name={item.name} />
+  <ItemCard imageUrl={item.image_url} name={item.name} contractAddress={item.asset_contract.address} tokenId={item.token_id} />
 </Col>) ,[listItem]);
 
   return (

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Navbar, Nav, Image, Button } from 'react-bootstrap';
 import { ArrowLeft } from 'react-bootstrap-icons';
+import { useParams } from 'react-router-dom';
 import { fetchItemDetail } from '../functions';
 
-export default function DetailPage({contractAddress, tokenId}) {
+export default function DetailPage() {
+    const { contractAddress, tokenId } = useParams();
     const [data, setData] = useState(null);
     // Fetch the item detail on page load
     useEffect(() => {
@@ -28,11 +30,11 @@ export default function DetailPage({contractAddress, tokenId}) {
                     {data.collection.name}
                 </Navbar.Brand>
             </Navbar>
-            <content className="content">
+            <main className="content">
                 <Image src={data.image_url} className="w-100" />
                 <h3 className="my-3 text-center mx-auto">{data.name}</h3>
                 <p className="px-3 my-3 overflow-auto">{data.description}</p>
-            </content>
+            </main>
             <footer className="footer mx-3 py-3">
                 <Button variant="primary" className="w-100" href={data.permalink}>Permalink</Button>
             </footer>
