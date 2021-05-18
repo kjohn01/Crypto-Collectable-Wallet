@@ -15,4 +15,4 @@
 - Single function components or pure components are placed in the `components` folder.
 - The `containers` folder is for the composition/aggregation of components.
 - Fetch related functions were extracted in `functions.js`.
-- A part from Bootstrap classes, custom styles were specified in App.scss. (Usually we'll use module.css, however, in this case, we don't have many components that need styling, so we just go with a central style sheet for simplicity).
+- A part from Bootstrap classes, custom styles were specified in `App.scss`. (Usually we'll use `module.css`, however, in this case, we don't have many components that need styling, so we just go with a central style sheet for simplicity).
