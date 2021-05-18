@@ -61,6 +61,7 @@ export default function ListPage() {
 
   return (
     <Container>
+      <h1 className="mx-auto text-center my-3">List</h1>
       <Row>
         {list}
       </Row>
